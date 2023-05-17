@@ -10,10 +10,18 @@ import session from "express-session";
 import env from "./utill/validateEnv";
 import MongoStore from "connect-mongo";
 import { requestAuth } from "./middleware/auth";
+import cors from "cors";
 
 const app = express();
 
 app.use(morgan("dev"));
+
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:5173", "https://wavez-note-app.netlify.app"],
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
