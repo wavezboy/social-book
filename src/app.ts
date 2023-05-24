@@ -42,15 +42,15 @@ app.use(
   })
 );
 
-// const origin =
-//   process.env.NODE_ENV === "production" ? "" : "http://localhost:5173";
+const origin =
+  process.env.NODE_ENV === "production" ? "" : "http://localhost:5173";
 
-// app.use(
-//   cors({
-//     origin,
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin,
+    credentials: true,
+  })
+);
 
 app.use("/api/notes", requestAuth, notesRoutes);
 app.use("/api/books", booksRoutes);
